@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Admin - Manage Cocktails</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   <style>
     body {
       font-family: 'Raleway', sans-serif;
@@ -12,23 +13,19 @@
       max-width: 1200px;
       margin: auto;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       font-size: 28px;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
-
     .top-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
-
-    .top-actions a,
-    .top-actions button {
+    .top-actions a, .top-actions button {
       background: #222;
       color: white;
       border: none;
@@ -45,79 +42,14 @@
       padding: 0 16px;
       line-height: 1;
     }
-
-    .top-actions a:hover,
-    .top-actions button:hover {
+    .top-actions a:hover, .top-actions button:hover {
       background: #444;
     }
-
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-      display: none;
-    }
-
-    label {
-      display: block;
-      margin: 12px 0 4px;
-      font-weight: bold;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-family: 'Raleway', sans-serif;
-    }
-
-    .form-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .form-actions button {
-      font-family: 'Raleway', sans-serif;
-      font-weight: bold;
-      font-size: 14px;
-      padding: 10px 18px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .form-actions .save-btn {
-      background-color: #222;
-      color: white;
-    }
-
-    .form-actions .save-btn:hover {
-      background-color: #444;
-    }
-
-    .form-actions .delete-btn {
-      background-color: #c62828;
-      color: white;
-    }
-
-    .form-actions .delete-btn:hover {
-      background-color: #b71c1c;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 24px;
     }
-
     .cocktail-card {
       background: white;
       border-radius: 10px;
@@ -125,19 +57,16 @@
       text-align: center;
       box-shadow: 0 0 5px rgba(0,0,0,0.05);
     }
-
     .cocktail-card img {
       width: 100%;
       max-height: 220px;
       object-fit: contain;
       border-radius: 8px;
     }
-
     .cocktail-card strong {
       display: block;
       margin: 10px 0 5px;
     }
-
     .cocktail-card button {
       background: #222;
       color: white;
@@ -153,10 +82,112 @@
       gap: 6px;
       margin-top: 10px;
     }
-
     .cocktail-card button:hover {
       background: #444;
     }
+    form {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    form label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    form input[type="text"],
+    form input[type="file"],
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+  
+    .styled-btn {
+      background: #222;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .styled-btn:hover {
+      background: #444;
+    }
+    .styled-btn.red {
+      background: #c62828;
+    }
+    .styled-btn.red:hover {
+      background: #e53935;
+    }
+
+  
+    .image-input-wrapper {
+      position: relative;
+      display: flex;
+    }
+    .image-input-wrapper input[type="text"] {
+      flex: 1;
+      padding-right: 120px;
+    }
+    .image-input-wrapper input[type="file"] {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      width: 120px;
+    }
+    .image-input-wrapper::after {
+      content: 'Choose File';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 120px;
+      background: #222;
+      color: white;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 6px 6px 0;
+      pointer-events: none;
+    }
+
+  
+    input[type="text"], input[type="file"], textarea {
+      min-height: 38px;
+    }
+    textarea {
+      height: 90px;
+    }
+
+  
+    input[type="text"], textarea {
+      max-width: calc(100% - 120px);
+    }
+
+  
+    form input[type="text"], form textarea {
+      max-width: 98%;
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+    }
+
   </style>
 </head>
 <body>
@@ -166,23 +197,27 @@
     <div>
       <a href="index.html">← Back to Home</a>
       <button onclick="showForm()">＋ Add Cocktail</button>
+      <button id="reorderBtn" onclick="toggleReorder()">🔓 Reorder</button>
+      <span id="spinner" style="margin-left:10px; display:none;">⏳ Saving...</span>
     </div>
   </div>
 
-  <form id="cocktailForm">
+  <form id="cocktailForm" style="display:none">
     <input type="hidden" id="cocktailId">
     <label>Name</label>
     <input type="text" id="name" required>
-    <label>Image URL</label>
-    <input type="text" id="image" required>
+    <label>Image (URL or Upload)</label>
+<div class="image-input-wrapper"><input type="text" id="image" placeholder="Paste URL or upload below"><input type="file" id="imageFile" accept="image/*"></div>
+  <div style="flex: 1;">
+    </div>
+</div>
     <label>Ingredients (one per line)</label>
     <textarea id="ingredients" rows="4" required></textarea>
     <label>Instructions (one step per line)</label>
     <textarea id="instructions" rows="4" required></textarea>
-
-    <div class="form-actions">
-      <button type="submit" class="save-btn">💾 Save Cocktail</button>
-      <button type="button" id="deleteBtn" class="delete-btn" style="display: none;" onclick="deleteCurrent()">🗑 Delete</button>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+      <button type="submit" class="styled-btn">💾 Save Cocktail</button>
+      <button type="button" id="deleteBtn" class="styled-btn red" style="display:none;" onclick="deleteCurrent()">🗑 Delete</button>
     </div>
   </form>
 
@@ -192,6 +227,9 @@
     const form = document.getElementById('cocktailForm');
     const list = document.getElementById('cocktailList');
     const deleteBtn = document.getElementById('deleteBtn');
+    const reorderBtn = document.getElementById('reorderBtn');
+    let reorderMode = false;
+    let sortableInstance;
 
     function showForm(clear = true) {
       form.style.display = 'block';
@@ -211,6 +249,7 @@
           data.forEach(c => {
             const div = document.createElement('div');
             div.className = 'cocktail-card';
+            div.setAttribute('data-id', c.id);
             div.innerHTML = `
               <img src="${c.image}" alt="">
               <strong>${c.name}</strong>
@@ -249,18 +288,28 @@
       const id = document.getElementById('cocktailId').value;
       const name = document.getElementById('name').value;
       const image = document.getElementById('image').value;
+      const imageFile = document.getElementById('imageFile').files[0];
       const ingredients = document.getElementById('ingredients').value;
       const instructions = document.getElementById('instructions').value;
       const slug = name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, '').replace(/[^a-z0-9]/g, '');
 
-      const body = { name, image, ingredients, instructions, slug };
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("ingredients", ingredients);
+      formData.append("instructions", instructions);
+      formData.append("slug", slug);
+      if (imageFile) {
+        formData.append("imageFile", imageFile);
+      } else {
+        formData.append("image", image);
+      }
+
       const method = id ? 'PUT' : 'POST';
       const url = id ? `/cocktails/${id}` : '/cocktails';
 
       fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: formData
       })
       .then(() => {
         form.reset();
@@ -268,6 +317,42 @@
         fetchCocktails();
       });
     };
+
+    function toggleReorder() {
+      if (!reorderMode) {
+        reorderMode = true;
+        reorderBtn.textContent = '💾 Save Order';
+        sortableInstance = new Sortable(list, { animation: 150 });
+      } else {
+        reorderMode = false;
+        reorderBtn.textContent = '🔓 Reorder';
+        sortableInstance.destroy();
+        saveOrder();
+      }
+    }
+
+    function saveOrder() {
+      const order = Array.from(document.querySelectorAll('.cocktail-card')).map((card, index) => ({
+        id: Number(card.getAttribute('data-id')),
+        position: index + 1
+      }));
+
+      reorderBtn.disabled = true;
+      document.getElementById('spinner').style.display = 'inline-block';
+
+      fetch('/cocktails/order', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order)
+      })
+      .then(() => {
+        setTimeout(() => {
+          document.getElementById('spinner').style.display = 'none';
+          reorderBtn.disabled = false;
+          fetchCocktails();
+        }, 300);
+      });
+    }
 
     fetchCocktails();
   </script>
