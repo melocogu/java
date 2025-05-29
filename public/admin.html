@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -65,10 +65,16 @@
       padding: 15px;
       text-align: center;
       box-shadow: 0 0 5px rgba(0,0,0,0.05);
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  height: 320px; /* ajustável */
     }
 
     .cocktail-card img {
       width: 100%;
+	  flex-grow: 1;
+      object-fit: contain;
       max-height: 220px;
       object-fit: contain;
       border-radius: 8px;
@@ -76,7 +82,7 @@
 
     .cocktail-card strong {
       display: block;
-      margin: 10px 0 5px;
+      margin: 12px 0 0;
     }
 
     .cocktail-card button {
@@ -123,22 +129,7 @@ form textarea {
   font-size: 14px;
   resize: vertical;
 }
-  
-.cocktail-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 320px;
-}
-
-.cocktail-card img {
-  flex-grow: 1;
-}
-
-.cocktail-card strong {
-  margin: 12px 0 0;
-}
-</style>
+  </style>
 </head>
 <body>
 <div class="top-actions">
