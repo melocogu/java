@@ -45,12 +45,22 @@ app.put('/cocktails/order', express.json(), (req, res) => {
 });
 
 // Get all cocktails
+// Get only active cocktails (for index)
 app.get('/cocktails', (req, res) => {
+  db.all('SELECT * FROM cocktails WHERE active = 1 ORDER BY position ASC', (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
+
+// Get all cocktails (for admin)
+app.get('/cocktails/all', (req, res) => {
   db.all('SELECT * FROM cocktails ORDER BY position ASC', (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(rows);
   });
 });
+
 
 // Create new cocktail
 app.post('/cocktails', upload.single('imageFile'), (req, res) => {
@@ -91,6 +101,16 @@ app.delete('/cocktails/:id', (req, res) => {
     res.json({ deleted: this.changes });
   });
 });
+
+
+// Toggle active/inactive
+app.put('/cocktails/:id/toggle', (req, res) => {
+  db.run('UPDATE cocktails SET active = NOT active WHERE id = ?', req.params.id, function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ success: true });
+  });
+});
+
 
 // ⚠️ EXPRESS STATIC DEVE VIR POR ÚLTIMO
 app.use(express.static(path.join(__dirname, 'public')));
