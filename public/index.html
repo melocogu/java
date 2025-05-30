@@ -138,6 +138,23 @@
 .cocktail-card h3 {
   margin: 12px 0 0;
 }
+
+@media (max-width: 600px) {
+  
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+}
+
 </style>
 </head>
 <body>
@@ -163,5 +180,18 @@
         });
       });
   </script>
+
+<script>
+function adjustGridColumns() {
+  const grids = document.querySelectorAll('.grid');
+  if (window.innerWidth <= 600) {
+    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(2, 1fr)');
+  } else {
+    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(5, 1fr)');
+  }
+}
+window.addEventListener('resize', adjustGridColumns);
+window.addEventListener('DOMContentLoaded', adjustGridColumns);
+</script>
 </body>
 </html>

@@ -50,11 +50,19 @@
       background: #444;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 24px;
-    }
+    
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
     .cocktail-card {
       background: white;
@@ -189,6 +197,13 @@ form textarea {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 </style>
@@ -421,5 +436,18 @@ document.getElementById('imageFile').addEventListener('change', function () {
     document.getElementById('image').value = '/images/' + file.name;
   }
 });
-</script></body>
+</script>
+<script>
+function adjustGridColumns() {
+  const grids = document.querySelectorAll('.grid');
+  if (window.innerWidth <= 600) {
+    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(2, 1fr)');
+  } else {
+    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(5, 1fr)');
+  }
+}
+window.addEventListener('resize', adjustGridColumns);
+window.addEventListener('DOMContentLoaded', adjustGridColumns);
+</script>
+</body>
 </html>
