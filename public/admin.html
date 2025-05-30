@@ -50,11 +50,11 @@
       background: #444;
     }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
 
     .cocktail-card {
       background: white;
@@ -166,22 +166,31 @@ form textarea {
   margin: auto;
 }
 
-
-/* Aplicar estilo Cinzel como no index.html */
 .cocktail-card strong {
   font-family: 'Cinzel', serif;
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
+  color: black;
+  margin-top: 10px;
+  display: block;
 }
 
-
-.cocktail-card .actions {
+.actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
+
+.actions button {
+  flex: 1;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>
 </head>
 <body>
@@ -261,6 +270,8 @@ function fetchCocktails() {
         actions.appendChild(editBtn);
         actions.appendChild(toggleBtn);
         div.appendChild(actions);
+        div.appendChild(editBtn);
+        div.appendChild(toggleBtn);
         list.appendChild(div);
       });
     });
