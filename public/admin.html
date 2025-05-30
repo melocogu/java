@@ -52,7 +52,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 24px;
     }
 
@@ -153,7 +153,7 @@ form textarea {
 }
 
 .cocktail-card button:first-of-type {
-  margin-right: 14px;
+  margin-right: 1px;
   flex-grow: 1;
   padding: 10px 20px;
   font-size: 14px;
@@ -164,6 +164,23 @@ form textarea {
   height: 20px;
   display: block;
   margin: auto;
+}
+
+
+/* Aplicar estilo Cinzel como no index.html */
+.cocktail-card strong {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+
+.cocktail-card .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
 }
 </style>
 </head>
@@ -239,8 +256,11 @@ function fetchCocktails() {
 
         div.appendChild(img);
         div.appendChild(name);
-        div.appendChild(editBtn);
-        div.appendChild(toggleBtn);
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        actions.appendChild(editBtn);
+        actions.appendChild(toggleBtn);
+        div.appendChild(actions);
         list.appendChild(div);
       });
     });
