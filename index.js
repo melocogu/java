@@ -11,7 +11,6 @@ const upload = multer({ dest: 'public/images/' });
 
 app.use(bodyParser.json()); // JSON parser para dados normais
 
-// ⚠️ TODAS AS ROTAS DEVEM VIR ANTES DO STATIC
 
 // Reorder cocktails (drag and drop)
 app.put('/cocktails/order', express.json(), (req, res) => {

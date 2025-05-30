@@ -4,8 +4,7 @@
 <title>Admin - Manage Cocktails</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel&amp;family=Raleway&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-<style>
-    body {
+<style>body {
       font-family: 'Raleway', sans-serif;
       background: #f4f4f4;
       padding: 40px;
@@ -121,44 +120,50 @@ form textarea {
   font-size: 14px;
   resize: vertical;
 }
-  
-.cocktail-card .actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-  gap: 12px;
+
+.cocktail-card button {
+  margin: 4px 4px 0 0;
 }
 
-.cocktail-card .edit-btn {
+.cocktail-card button:first-of-type {
+  margin-right: 12px;
+}
+
+.cocktail-card button {
+  margin: 4px 4px 0 0;
+}
+
+.cocktail-card button:first-of-type {
+  margin-right: 14px;
   flex-grow: 1;
-  padding: 12px 0;
+  padding: 10px 20px;
   font-size: 14px;
-  background: #222;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 }
 
-.cocktail-card .toggle-btn {
-  width: 44px;
-  height: 44px;
-  background: #222;
-  border: none;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cocktail-card .toggle-btn img {
+.cocktail-card button img {
   width: 20px;
+  height: 20px;
+}
+
+.cocktail-card button {
+  margin: 4px 4px 0 0;
+  height: 44px;
+  line-height: 44px;
+  vertical-align: middle;
+}
+
+.cocktail-card button:first-of-type {
+  margin-right: 14px;
+  flex-grow: 1;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.cocktail-card button img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: auto;
 }
 </style>
 </head>
@@ -229,7 +234,7 @@ function fetchCocktails() {
         editBtn.onclick = () => editCocktail(c);
 
         const toggleBtn = document.createElement('button');
-        toggleBtn.textContent = c.active ? '👁' : '🙈';
+        toggleBtn.innerHTML = c.active ? '<img src="/images/eye.png">': '<img src="/images/eye-off.png">';
         toggleBtn.onclick = () => toggleActive(c.id, c.active);
 
         div.appendChild(img);
