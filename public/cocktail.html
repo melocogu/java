@@ -152,10 +152,10 @@
     const params = new URLSearchParams(window.location.search);
     const slug = params.get('slug');
 
-    fetch('/cocktails')
+    fetch('/cocktails?slug=' + encodeURIComponent(slug))
       .then(res => res.json())
       .then(data => {
-        const cocktail = data.find(c => c.slug === slug);
+        const cocktail = data;
         if (!cocktail) return;
 
         document.getElementById('name').innerText = cocktail.name;

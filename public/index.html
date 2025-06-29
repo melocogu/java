@@ -1,179 +1,162 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Gistihusid Cocktails</title>
-<link href="cocktail.png" rel="icon" type="image/x-icon"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&amp;family=Raleway&amp;display=swap" rel="stylesheet"/>
-<style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+  <meta charset="UTF-8">
+  <title>Gistihusid Cocktails</title>
+  <link rel="icon" href="cocktail.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
     body {
       font-family: 'Raleway', sans-serif;
       margin: 0;
       padding: 0;
+      text-align: center;
       background-color: #f9f9f9;
     }
 
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 40px auto 20px;
-      padding: 0 20px;
-      position: relative;
-    }
-
-    .header-flex h1 {
+    h1 {
       font-family: 'Cinzel', serif;
       font-size: 32px;
+      margin: 20px auto;
+    }
+
+    .page-container {
+      padding: 20px;
+      max-width: 1200px;
       margin: 0 auto;
-      text-align: center;
-      flex-grow: 1;
     }
 
-    .admin-button {
-      position: absolute;
-      right: 20px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 14px;
+    .grid {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
-    .admin-button:hover {
-      background: #444;
-    }
-
-	.page-container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	max-width: 1200px;
-	margin: auto;
-	gap: 24px;
-	padding: 20px;
-	}
-
-    .cocktail-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 16px;
-      text-align: center;
-      transition: transform 0.2s ease;
+    .cocktail {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
       text-decoration: none;
       color: inherit;
     }
 
-    .cocktail-card:hover {
-      transform: translateY(-5px);
+    .cocktail:hover {
+      transform: scale(1.03);
     }
 
-    .cocktail-card img {
+    .image-container {
+      height: 230px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cocktail img {
+      max-height: 100%;
       max-width: 100%;
-      max-height: 220px;
       object-fit: contain;
+      transition: transform 0.2s ease;
     }
 
-    .cocktail-card h3 {
-      margin-top: 12px;
+    .cocktail:hover img {
+      transform: scale(1.05);
+    }
+
+    .cocktail h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
       font-family: 'Cinzel', serif;
-      font-size: 16px;
-      text-transform: uppercase;
     }
 
-    @media (max-width: 1200px) {
-      .page-container {
-        grid-template-columns: repeat(5, 1fr);
+    @media (max-width: 768px) {
+      .cocktail {
+        height: 260px;
+      }
+
+      .image-container {
+        height: 180px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .grid {
+        padding: 10px;
+        gap: 15px;
       }
     }
 
-    @media (max-width: 1000px) {
-      .page-container {
-        grid-template-columns: repeat(4, 1fr);
+    @media (max-width: 480px) {
+      .cocktail {
+        height: 220px;
+        padding: 8px;
       }
-    }
 
-    @media (max-width: 800px) {
-      .page-container {
-        grid-template-columns: repeat(3, 1fr);
+      .image-container {
+        height: 140px;
       }
-    }
 
-    @media (max-width: 600px) {
-      .page-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 400px) {
-      .page-container {
-        grid-template-columns: repeat(1, 1fr);
+      .cocktail h3 {
+        font-size: 16px;
       }
     }
   
-.cocktail-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 320px;
+.admin-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #222;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
 }
 
-.cocktail-card img {
-  flex-grow: 1;
+.admin-button:hover {
+  background: #444;
 }
-
-.cocktail-card h3 {
-  margin: 12px 0 0;
-}
-
-@media (max-width: 600px) {
-  
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-}
-
 </style>
 </head>
 <body>
-<div class="header-flex">
-<h1>GISTIHUSID COCKTAILS</h1>
-<a class="admin-button" href="admin.html">⚙️ Manage Cocktails</a>
+
+  <div class="page-container">
+    <div style="position: relative;">
+  <h1>Gistihusid Cocktails</h1>
+  <a class="admin-button" href="admin.html">⚙️ Manage Cocktails</a>
 </div>
-<div class="page-container" id="cocktailContainer"></div>
-<script>
-    fetch('/cocktails')
+    <div class="grid" id="cocktailContainer"></div>
+  </div>
+
+  <script>
+    fetch('/cocktails/active', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('cocktailContainer');
         data.forEach(cocktail => {
           const card = document.createElement('a');
-          card.className = 'cocktail-card';
+          card.className = 'cocktail';
           card.href = `cocktail.html?slug=${cocktail.slug}`;
           card.innerHTML = `
-            <img src="${cocktail.image}" alt="${cocktail.name}">
+            <div class="image-container">
+              <img src="${cocktail.image}" alt="${cocktail.name}">
+            </div>
             <h3>${cocktail.name}</h3>
           `;
           container.appendChild(card);
@@ -181,17 +164,5 @@
       });
   </script>
 
-<script>
-function adjustGridColumns() {
-  const grids = document.querySelectorAll('.grid');
-  if (window.innerWidth <= 600) {
-    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(2, 1fr)');
-  } else {
-    grids.forEach(grid => grid.style.gridTemplateColumns = 'repeat(5, 1fr)');
-  }
-}
-window.addEventListener('resize', adjustGridColumns);
-window.addEventListener('DOMContentLoaded', adjustGridColumns);
-</script>
 </body>
 </html>

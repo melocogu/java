@@ -1,31 +1,30 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Admin - Manage Cocktails</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&amp;family=Raleway&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-<style>body {
+  <meta charset="utf-8" />
+  <title>Admin - Manage Cocktails</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <style>
+    body {
       font-family: 'Raleway', sans-serif;
       background: #f4f4f4;
       padding: 40px;
       max-width: 1200px;
       margin: auto;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       font-size: 28px;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
-
     .top-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
-
     .top-actions a,
     .top-actions button {
       background: #222;
@@ -44,46 +43,39 @@
       padding: 0 16px;
       line-height: 1;
     }
-
     .top-actions a:hover,
     .top-actions button:hover {
       background: #444;
     }
-
-    
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-    .cocktail-card {
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+        .cocktail-card {
       background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       border-radius: 10px;
       padding: 15px;
       text-align: center;
       box-shadow: 0 0 5px rgba(0,0,0,0.05);
     }
-
     .cocktail-card img {
       width: 100%;
       max-height: 220px;
       object-fit: contain;
       border-radius: 8px;
     }
-
     .cocktail-card strong {
       display: block;
       margin: 10px 0 5px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: black;
     }
-
     .cocktail-card button {
       background: #222;
       color: white;
@@ -97,164 +89,110 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      margin-top: 10px;
+      margin: 4px 4px 0 0;
+      height: 44px;
     }
-
     .cocktail-card button:hover {
       background: #444;
     }
-	form {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
-  margin-bottom: 30px;
-}
-
-form label {
-  display: block;
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-form input[type="text"],
-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 14px;
-  resize: vertical;
-}
-
-.cocktail-card button {
-  margin: 4px 4px 0 0;
-}
-
-.cocktail-card button:first-of-type {
-  margin-right: 12px;
-}
-
-.cocktail-card button {
-  margin: 4px 4px 0 0;
-}
-
-.cocktail-card button:first-of-type {
-  margin-right: 14px;
-  flex-grow: 1;
-  padding: 10px 20px;
-  font-size: 14px;
-}
-
-.cocktail-card button img {
-  width: 20px;
-  height: 20px;
-}
-
-.cocktail-card button {
-  margin: 4px 4px 0 0;
-  height: 44px;
-  line-height: 44px;
-  vertical-align: middle;
-}
-
-.cocktail-card button:first-of-type {
-  margin-right: 1px;
-  flex-grow: 1;
-  padding: 10px 20px;
-  font-size: 14px;
-}
-
-.cocktail-card button img {
-  width: 20px;
-  height: 20px;
-  display: block;
-  margin: auto;
-}
-
-.cocktail-card strong {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: black;
-  margin-top: 10px;
-  display: block;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.actions button {
-  flex: 1;
-  white-space: nowrap;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-</style>
+    .actions {
+      display: flex;
+      margin-top: auto;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    form {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    form label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    form input[type="text"],
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+  </style>
 </head>
 <body>
 <div class="top-actions">
-<h1>Manage Cocktails</h1>
-<div>
-<a href="index.html">← Back to Home</a>
-<button onclick="showForm()">＋ Add Cocktail</button>
-<button id="reorderBtn" onclick="toggleReorder()">🔓 Reorder</button>
-<span id="spinner" style="margin-left:10px; display:none;">⏳ Saving...</span>
+  <h1>Manage Cocktails</h1>
+  <div>
+    <a href="index.html">← Back to Home</a>
+    <button onclick="showForm()">＋ Add Cocktail</button>
+    <button onclick="logout()">🚪 Logout</button>
+    <button onclick="saveOrder()" id="saveOrderBtn" style="display:none;">💾 Save Order</button>
+    <span id="spinner" style="margin-left:10px; display:none;">⏳ Saving...</span>
+  </div>
 </div>
-</div>
+
 <form id="cocktailForm" style="display:none">
-<input id="cocktailId" type="hidden"/>
-<label>Name</label>
-<input id="name" required="" type="text"/>
-<label>Image URL</label>
-<div class="image-field" style="display:flex;align-items:center;gap:10px;"><input id="image" placeholder="Paste image URL or upload" required="" type="text"/><label class="styled-btn" for="imageFile" style="white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; height: 38px; padding: 0 16px; background: #222; color: white; border-radius: 6px; font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: bold; cursor: pointer; margin-top: 1px; height: 38px;">📤 Upload Image</label><input accept="image/*" id="imageFile" style="display:none;" type="file"/></div>
-<label>Ingredients (one per line)</label>
-<textarea id="ingredients" required="" rows="4"></textarea>
-<label>Instructions (one step per line)</label>
-<textarea id="instructions" required="" rows="4"></textarea>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-<button style="background:#222;color:white;padding:10px 18px;border-radius:6px;" type="submit">💾 Save Cocktail</button>
-<button id="deleteBtn" onclick="deleteCurrent()" style="background:#c62828;color:white;padding:10px 18px;border-radius:6px;display:none;" type="button">🗑 Delete</button>
-</div>
+  <input id="cocktailId" type="hidden" />
+  <label>Name</label>
+  <input id="name" required type="text" />
+  <label>Image URL</label>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <input id="image" placeholder="Paste image URL or upload" required type="text" />
+    <label for="imageFile" style="white-space:nowrap;cursor:pointer;background:#222;color:white;padding:10px 16px;border-radius:6px;">📤 Upload Image</label>
+    <input accept="image/*" id="imageFile" type="file" style="display:none;" />
+  </div>
+  <label>Ingredients (one per line)</label>
+  <textarea id="ingredients" required rows="4"></textarea>
+  <label>Instructions (one step per line)</label>
+  <textarea id="instructions" required rows="4"></textarea>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;">
+    <button type="submit" style="background:#222;color:white;border:none;padding:10px 20px;border-radius:6px;font-weight:bold;font-family:'Raleway',sans-serif;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;">💾 Save Cocktail</button>
+    <button id="deleteBtn" onclick="deleteCurrent()" type="button" style="display:none;background:#c62828;color:white;border:none;padding:10px 20px;border-radius:6px;font-weight:bold;font-family:'Raleway',sans-serif;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;">🗑 Delete</button>
+  </div>
 </form>
+
 <div class="grid" id="cocktailList"></div>
+
 <script>
-    const form = document.getElementById('cocktailForm');
-    const list = document.getElementById('cocktailList');
-    const deleteBtn = document.getElementById('deleteBtn');
-    const reorderBtn = document.getElementById('reorderBtn');
-    let reorderMode = false;
-    let sortableInstance;
+const form = document.getElementById('cocktailForm');
+const list = document.getElementById('cocktailList');
+const deleteBtn = document.getElementById('deleteBtn');
 
-    function showForm(clear = true) {
-      form.style.display = 'block';
-      if (clear) {
-        form.reset();
-        document.getElementById('cocktailId').value = '';
-        deleteBtn.style.display = 'none';
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function showForm(clear = true) {
+  form.style.display = 'block';
+  if (clear) {
+    form.reset();
+    document.getElementById('cocktailId').value = '';
+    deleteBtn.style.display = 'none';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    
+document.getElementById('imageFile').addEventListener('change', function () {
+  const file = this.files[0];
+  if (file) {
+    document.getElementById('image').value = '/images/' + file.name;
+  }
+});
+
+function logout() {
+  fetch('/logout', {
+    method: 'POST',
+    credentials: 'include'
+  }).then(() => window.location.href = '/login.html');
+}
+
 function fetchCocktails() {
-  fetch('/cocktails/all')
+  fetch('/cocktails/all', { credentials: 'include' })
     .then(res => res.json())
     .then(data => {
       list.innerHTML = '';
@@ -275,24 +213,46 @@ function fetchCocktails() {
         editBtn.onclick = () => editCocktail(c);
 
         const toggleBtn = document.createElement('button');
-        toggleBtn.innerHTML = c.active ? '<img src="/images/eye.png">': '<img src="/images/eye-off.png">';
+        toggleBtn.innerHTML = c.active ? '<img src="/images/eye.png">' : '<img src="/images/eye-off.png">';
         toggleBtn.onclick = () => toggleActive(c.id, c.active);
 
-        div.appendChild(img);
-        div.appendChild(name);
         const actions = document.createElement('div');
         actions.className = 'actions';
         actions.appendChild(editBtn);
         actions.appendChild(toggleBtn);
-        div.appendChild(actions);
-        div.appendChild(editBtn);
-        div.appendChild(toggleBtn);
+
+        div.appendChild(img);
+
+        const bottom = document.createElement('div');
+        bottom.style.marginTop = 'auto';
+        bottom.appendChild(name);
+        bottom.appendChild(actions);
+
+        div.appendChild(bottom);
         list.appendChild(div);
+      });
+
+      new Sortable(list, {
+        animation: 150,
+        onEnd: () => saveOrder()
       });
     });
 }
 
-fetchCocktails();
+function saveOrder() {
+  const order = Array.from(document.querySelectorAll('.cocktail-card')).map((el, index) => ({
+    id: Number(el.getAttribute('data-id')),
+    position: index + 1
+  }));
+
+  console.log("🚚 Ordem calculada:", order);
+  document.getElementById('spinner').style.display = 'inline-block';
+
+  const form = document.getElementById('orderForm');
+  const input = document.getElementById('orderInput');
+  input.value = JSON.stringify(order);
+  form.submit();
+}
 
 function editCocktail(c) {
   document.getElementById('cocktailId').value = c.id;
@@ -305,138 +265,114 @@ function editCocktail(c) {
 }
 
 function toggleActive(id, current) {
-  fetch(`/cocktails/${id}/toggle`, { method: 'PUT' })
+  fetch(`/cocktails/${id}/toggle`, { method: 'PUT', credentials: 'include' })
     .then(() => fetchCocktails());
 }
 
-    form.onsubmit = e => {
-      e.preventDefault();
-      const id = document.getElementById('cocktailId').value;
-      const name = document.getElementById('name').value;
-      const image = document.getElementById('image').value;
-      const ingredients = document.getElementById('ingredients').value;
-      const instructions = document.getElementById('instructions').value;
-      const slug = name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, '').replace(/[^a-z0-9]/g, '');
+form.onsubmit = e => {
+  e.preventDefault();
+  const id = document.getElementById('cocktailId').value;
+  const name = document.getElementById('name').value;
+  const image = document.getElementById('image').value;
+  const ingredients = document.getElementById('ingredients').value;
+  const instructions = document.getElementById('instructions').value;
+  const slug = name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, '').replace(/[^a-z0-9]/g, '');
 
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("ingredients", ingredients);
-      formData.append("instructions", instructions);
-      formData.append("slug", slug);
-      if (document.getElementById('imageFile').files[0]) {
-        formData.append("imageFile", document.getElementById('imageFile').files[0]);
-      } else {
-        formData.append("image", image);
-      }
-      const method = id ? 'PUT' : 'POST';
-      const url = id ? `/cocktails/${id}` : '/cocktails';
-
-      fetch(url, {
-        method,
-        body: formData
-      })
-      .then(() => {
-        form.reset();
-        form.style.display = 'none';
-        fetchCocktails();
-
-function editCocktail(c) {
-  document.getElementById('cocktailId').value = c.id;
-  document.getElementById('name').value = c.name;
-  document.getElementById('image').value = c.image;
-  document.getElementById('ingredients').value = c.ingredients;
-  document.getElementById('instructions').value = c.instructions;
-  deleteBtn.style.display = 'inline-block';
-  showForm(false);
-}
-
-function toggleActive(id, current) {
-  fetch(`/cocktails/${id}/toggle`, { method: 'PUT' })
-    .then(() => fetchCocktails());
-}
-      });
-    };
-
-    function toggleReorder() {
-      if (!reorderMode) {
-        reorderMode = true;
-        reorderBtn.textContent = '💾 Save Order';
-        sortableInstance = new Sortable(list, {
-          animation: 150
-        });
-      } else {
-        reorderMode = false;
-        reorderBtn.textContent = '🔓 Reorder';
-        sortableInstance.destroy();
-        saveOrder();
-      }
-    }
-
-    function saveOrder() {
-      const order = Array.from(document.querySelectorAll('.cocktail-card')).map((card, index) => ({
-        id: Number(card.getAttribute('data-id')),
-        position: index + 1
-      }));
-
-      reorderBtn.disabled = true;
-      document.getElementById('spinner').style.display = 'inline-block';
-
-      fetch('/cocktails/order', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(order)
-      })
-      .then(() => {
-        setTimeout(() => {
-          console.log('Order saved');
-          document.getElementById('spinner').style.display = 'none';
-          reorderBtn.disabled = false;
-          
-          fetchCocktails();
-
-function editCocktail(c) {
-  document.getElementById('cocktailId').value = c.id;
-  document.getElementById('name').value = c.name;
-  document.getElementById('image').value = c.image;
-  document.getElementById('ingredients').value = c.ingredients;
-  document.getElementById('instructions').value = c.instructions;
-  deleteBtn.style.display = 'inline-block';
-  showForm(false);
-}
-
-function toggleActive(id, current) {
-  fetch(`/cocktails/${id}/toggle`, { method: 'PUT' })
-    .then(() => fetchCocktails());
-}
-        }, 300);
-      });
-    }
-
-    fetchCocktails();
-
-function editCocktail(c) {
-  document.getElementById('cocktailId').value = c.id;
-  document.getElementById('name').value = c.name;
-  document.getElementById('image').value = c.image;
-  document.getElementById('ingredients').value = c.ingredients;
-  document.getElementById('instructions').value = c.instructions;
-  deleteBtn.style.display = 'inline-block';
-  showForm(false);
-}
-
-function toggleActive(id, current) {
-  fetch(`/cocktails/${id}/toggle`, { method: 'PUT' })
-    .then(() => fetchCocktails());
-}
-  </script>
-<script>
-document.getElementById('imageFile').addEventListener('change', function () {
-  const file = this.files[0];
-  if (file) {
-    document.getElementById('image').value = '/images/' + file.name;
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("ingredients", ingredients);
+  formData.append("instructions", instructions);
+  formData.append("slug", slug);
+  if (document.getElementById('imageFile').files[0]) {
+    formData.append("imageFile", document.getElementById('imageFile').files[0]);
+  } else {
+    formData.append("image", image);
   }
-});
-</script>
+  const method = id ? 'PUT' : 'POST';
+  const url = id ? `/cocktails/${id}` : '/cocktails';
 
+  fetch(url, {
+    method,
+    body: formData,
+    credentials: 'include'
+  })
+  .then(() => {
+    form.reset();
+    form.style.display = 'none';
+    let reorderActive = false;
+let sortableInstance = null;
+
+function toggleReorder() {
+  reorderActive = !reorderActive;
+  document.getElementById('saveOrderBtn').style.display = reorderActive ? 'inline-block' : 'none';
+
+  if (reorderActive) {
+    sortableInstance = new Sortable(list, {
+      animation: 150
+    });
+  } else {
+    if (sortableInstance) sortableInstance.destroy();
+  }
+}
+
+fetchCocktails();
+  });
+};
+
+function deleteCurrent() {
+  const id = document.getElementById('cocktailId').value;
+  if (!id) return alert("No cocktail selected.");
+  if (!confirm("Are you sure you want to delete this cocktail?")) return;
+
+  fetch('/cocktails/' + id, {
+    method: 'DELETE',
+    credentials: 'include'
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Failed to delete");
+    form.reset();
+    form.style.display = 'none';
+    let reorderActive = false;
+let sortableInstance = null;
+
+function toggleReorder() {
+  reorderActive = !reorderActive;
+  document.getElementById('saveOrderBtn').style.display = reorderActive ? 'inline-block' : 'none';
+
+  if (reorderActive) {
+    sortableInstance = new Sortable(list, {
+      animation: 150
+    });
+  } else {
+    if (sortableInstance) sortableInstance.destroy();
+  }
+}
+
+fetchCocktails();
+  })
+  .catch(err => alert("Error deleting cocktail: " + err.message));
+}
+
+let reorderActive = false;
+let sortableInstance = null;
+
+function toggleReorder() {
+  reorderActive = !reorderActive;
+  document.getElementById('saveOrderBtn').style.display = reorderActive ? 'inline-block' : 'none';
+
+  if (reorderActive) {
+    sortableInstance = new Sortable(list, {
+      animation: 150
+    });
+  } else {
+    if (sortableInstance) sortableInstance.destroy();
+  }
+}
+
+fetchCocktails();
+</script>
+<form id="orderForm" method="POST" action="/cocktails/order" style="display:none;">
+  <input type="hidden" name="order" id="orderInput" />
+</form>
 </body>
 </html>

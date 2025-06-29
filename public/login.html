@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #222;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #444;
+    }
+    .toggle {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .toggle a {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .toggle a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2 id="formTitle">Login</h2>
+    <form id="authForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" id="submitBtn">🔐 Login</button>
+    </form>
+    <div class="toggle">
+      Don't have an account? <a onclick="toggleMode()">Register</a>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function toggleMode() {
+      isLogin = !isLogin;
+      document.getElementById('formTitle').innerText = isLogin ? 'Login' : 'Register';
+      document.getElementById('submitBtn').innerText = isLogin ? '🔐 Login' : '🔓 Registar';
+      document.querySelector('.toggle').innerHTML = isLogin
+        ? 'Don\'t have an account? <a onclick="toggleMode()">Register</a>'
+        : 'Already have an account? <a onclick="toggleMode()">Login</a>';
+    }
+
+    document.getElementById('authForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const endpoint = isLogin ? '/login' : '/register';
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = '/admin.html';
+      } else {
+        alert(data.error || 'Erro');
+      }
+    };
+  </script>
+</body>
+</html>
