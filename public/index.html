@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gistihusid Cocktails</title>
+  <title>Cocktails Recipe Book</title>
   <link rel="icon" href="cocktail.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -114,11 +114,42 @@
         font-size: 16px;
       }
     }
-  
+
+@media (max-width: 600px) {
+  h1 {
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  .admin-button {
+    top: 10px;
+    right: 10px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .cocktail {
+    height: 180px;
+    padding: 6px;
+  }
+
+  .image-container {
+    height: 150px;
+  }
+
+  .cocktail h3 {
+    font-size: 14px;
+  }
+}
+
 .admin-button {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 20px;
   background: #222;
   color: white;
   text-decoration: none;
@@ -138,7 +169,7 @@
 
   <div class="page-container">
     <div style="position: relative;">
-  <h1>Gistihusid Cocktails</h1>
+  <h1>Cocktails Recipe Book</h1>
   <a class="admin-button" href="admin.html">⚙️ Manage Cocktails</a>
 </div>
     <div class="grid" id="cocktailContainer"></div>
