@@ -8,24 +8,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Raleway', sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
       background-color: #f9f9f9;
-    }
-
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 32px;
-      margin: 20px auto;
     }
 
     .page-container {
       padding: 20px;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .header-wrapper {
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      margin: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    .admin-button {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-button:hover {
+      background: #444;
+    }
+
+    .admin-button .icon {
+      font-size: 16px;
+    }
+
+    .admin-button .label {
+      display: inline;
     }
 
     .grid {
@@ -81,22 +121,41 @@
       font-family: 'Cinzel', serif;
     }
 
-    @media (max-width: 768px) {
-      .cocktail {
-        height: 260px;
-      }
-
-      .image-container {
-        height: 180px;
-      }
-
+    @media (max-width: 660px) {
       h1 {
-        font-size: 24px;
+        font-size: 22px;
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      .admin-button {
+        top: 0px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 2px;
+      }
+
+      .admin-button .label {
+        display: none;
       }
 
       .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
         padding: 10px;
-        gap: 15px;
+      }
+
+      .cocktail {
+        height: 180px;
+        padding: 6px;
+      }
+
+      .image-container {
+        height: 150px;
+      }
+
+      .cocktail h3 {
+        font-size: 14px;
       }
     }
 
@@ -114,64 +173,17 @@
         font-size: 16px;
       }
     }
-
-@media (max-width: 600px) {
-  h1 {
-    text-align: left;
-    margin-left: 10px;
-  }
-
-  .admin-button {
-    top: 10px;
-    right: 10px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .cocktail {
-    height: 180px;
-    padding: 6px;
-  }
-
-  .image-container {
-    height: 150px;
-  }
-
-  .cocktail h3 {
-    font-size: 14px;
-  }
-}
-
-.admin-button {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  background: #222;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 14px;
-}
-
-.admin-button:hover {
-  background: #444;
-}
-</style>
+  </style>
 </head>
 <body>
-
   <div class="page-container">
-    <div style="position: relative;">
-  <h1>Cocktails Recipe Book</h1>
-  <a class="admin-button" href="admin.html">⚙️ Manage Cocktails</a>
-</div>
+    <div class="header-wrapper">
+      <h1>Cocktails Recipe Book</h1>
+      <a class="admin-button" href="admin.html" title="Manage Cocktails">
+        <span class="icon">⚙️</span>
+        <span class="label">Manage Cocktails</span>
+      </a>
+    </div>
     <div class="grid" id="cocktailContainer"></div>
   </div>
 
@@ -183,7 +195,7 @@
         data.forEach(cocktail => {
           const card = document.createElement('a');
           card.className = 'cocktail';
-          card.href = `cocktail.html?slug=${cocktail.slug}`;
+          card.href = "cocktail.html?slug=" + cocktail.slug;
           card.innerHTML = `
             <div class="image-container">
               <img src="${cocktail.image}" alt="${cocktail.name}">
@@ -194,6 +206,5 @@
         });
       });
   </script>
-
 </body>
 </html>
