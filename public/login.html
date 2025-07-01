@@ -147,8 +147,8 @@ body {
       });
 
       const data = await res.json();
-      if (data.success) {
-        window.location.href = '/admin.html';
+if (data.success) {
+  window.location.href = '/index.html';
       } else {
         alert(data.error || 'Erro');
       }
